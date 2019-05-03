@@ -4,15 +4,15 @@ twaces is a project for HACS408V, a data visualization course at the University 
 * Sentiment analysis on tweets that mention UMD/ACES that will reveal overall public opinions
 * Social graphs of the most popular users that tweet about UMD/ACES
 * Potentially more!
-## Setup Tasking
+## Setup
 - [x] Create Twitter developer account
 - [x] Create new project and get API key
 - [x] Install Tweepy
-## Spatial Analysis Tasking
+## Spatial Analysis
 - [ ] TBD
-## Sentiment Analysis Tasking
+## Sentiment Analysis
 - [ ] TBD
-## Social Graph Tasking
+## Social Graph
 - [ ] TBD
 ## Credits
 * [Tweepy](http://www.tweepy.org/)
