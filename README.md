@@ -1,12 +1,18 @@
 # HACS408V Project #3: Tweet Analysis w/ Twitter API
-This is a project for HACS408V, a data visualization course at UMD, where I analyze my tweets using Twitter's API and Python.
-## Tasks
+twaces is a project for HACS408V, a data visualization course at the University of Maryland, College Park (UMD). This course is also part of the Advanced Cybersecurity Experience for Students (ACES) Minor program. In this project, I will utilize Twitter's API to analyze tweets referencing either UMD or ACES. From this data I will attempt to create visualizations for the following:
+* A spatial graph that displays where UMD/ACES is mentioned most around the world
+* Sentiment analysis on tweets that mention UMD/ACES that will reveal overall public opinions
+* Social graphs of the most popular users that tweet about UMD/ACES
+* Potentially more!
+## Setup Tasking
 - [x] Create Twitter developer account
 - [x] Create new project and get API key
 - [x] Install Tweepy
-## Ideas
-* Create spatial graph on where UMD or ACES is mentioned the most around the world
-* Run sentiment analysis on tweets to view overall opinion of UMD or ACES
-* Create social graphs of the most popular users that tweet about UMD or ACES
+## Spatial Analysis Tasking
+- [ ] TBD
+## Sentiment Analysis Tasking
+- [ ] TBD
+## Social Graph Tasking
+- [ ] TBD
 ## Credits
 * [Tweepy](http://www.tweepy.org/)
