@@ -19,4 +19,5 @@ twaces is a project for HACS408V, a data visualization course at the University 
 ## Social Graph
 - [ ] TBD
 ## Credits
+* [Twitter API](https://developer.twitter.com/en/docs.html)
 * [Tweepy](http://www.tweepy.org/)
