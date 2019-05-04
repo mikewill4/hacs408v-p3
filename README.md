@@ -9,7 +9,7 @@ twaces is a project for HACS408V, a data visualization course at the University 
 - [x] Create new project and get API key
 - [x] Install Tweepy
 ## Data collection
-- [ ] Create multiple complex search queries for both ACES and UMD
+- [x] Create multiple complex search queries for both ACES and UMD
 - [ ] Alter analysis script to run queries and store results in a data structure
 - [ ] Add script execution to cronjob to execute routinely
 ## Spatial Analysis
