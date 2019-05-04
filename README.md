@@ -10,8 +10,10 @@ twaces is a project for HACS408V, a data visualization course at the University 
 - [x] Install Tweepy
 ## Data collection
 - [x] Create multiple complex search queries for both ACES and UMD
-- [ ] Alter analysis script to run queries and store results in a data structure
+- [x] Create scripts to run initial queries for last 30 days worth of data
+- [ ] Create new altered script to only pull from last hour of data
 - [ ] Add script execution to cronjob to execute routinely
+- [ ] Export data to JSON files
 ## Spatial Analysis
 - [ ] TBD
 ## Sentiment Analysis
