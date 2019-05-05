@@ -15,7 +15,7 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
 # Create API object
-api = tweepy.API(auth)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Create data structure to store data
 data = {}
@@ -80,38 +80,46 @@ print "Searching for ACES related tweets..."
 print "----------------------------- @ACES_UMD Queries -----------------------------"
 # Iterate through Queries, storing tweets in dictionary
 for query in aces_umd_queries:
-    search_results = api.search(q=query,count=100)
+    search_results = tweepy.Cursor(api.search,q=query,count=100).items()
     data[query] = []
+    num_results = 0
     for tweet in search_results:
         add_tweet_fields(query, tweet)
-    print "Added " + str(len(search_results)) + " tweets from " + query + " query"
+        num_results += 1
+    print "Added " + str(num_results) + " tweets from " + query + " query"
 
 print "----------------------------- ACES + UMD Queries -----------------------------"
 # Iterate through Queries, storing tweets in dictionary
 for query in aces_plus_umd_queries:
-    search_results = api.search(q=query,count=100)
+    search_results = tweepy.Cursor(api.search,q=query,count=100).items()
     data[query] = []
+    num_results = 0
     for tweet in search_results:
         add_tweet_fields(query, tweet)
-    print "Added " + str(len(search_results)) + " tweets from " + query + " query"
+        num_results += 1
+    print "Added " + str(num_results) + " tweets from " + query + " query"
 
 print "----------------------------- ACES + Maryland Queries -----------------------------"
 # Iterate through Queries, storing tweets in dictionary
 for query in aces_maryland_queries:
-    search_results = api.search(q=query,count=100)
+    search_results = tweepy.Cursor(api.search,q=query,count=100).items()
     data[query] = []
+    num_results = 0
     for tweet in search_results:
         add_tweet_fields(query, tweet)
-    print "Added " + str(len(search_results)) + " tweets from " + query + " query"
+        num_results += 1
+    print "Added " + str(num_results) + " tweets from " + query + " query"
 
 print "----------------------------- ACES + CS query -----------------------------"
 # Iterate through Queries, storing tweets in dictionary
 for query in aces_cs_queries:
-    search_results = api.search(q=query,count=100)
+    search_results = tweepy.Cursor(api.search,q=query,count=100).items()
     data[query] = []
+    num_results = 0
     for tweet in search_results:
         add_tweet_fields(query, tweet)
-    print "Added " + str(len(search_results)) + " tweets from " + query + " query"
+        num_results += 1
+    print "Added " + str(num_results) + " tweets from " + query + " query"
 
 # Export data to json file
 with open("aces_data.json", "w") as fp:
