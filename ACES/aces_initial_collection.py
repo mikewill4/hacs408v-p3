@@ -34,10 +34,10 @@ aces_cs_queries = ["ACES CS", "ACES CS :(", "ACES CS :)", "ACES CS:media", "ACES
 
 # Utility method to add tweet fields to data dictionary
 def add_tweet_fields(query, tweet):
-
     # Null checks
     if tweet.place == None or tweet.coordinates == None:
         data[query].append({
+            "id": tweet.id,
             "created_at": str(tweet.created_at),
             "text": tweet.text,
             "user_name": tweet.user.screen_name,
@@ -56,6 +56,7 @@ def add_tweet_fields(query, tweet):
         })
     else:
         data[query].append({
+            "id": tweet.id,
             "created_at": str(tweet.created_at),
             "text": tweet.text,
             "user_name": tweet.user.screen_name,
