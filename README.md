@@ -11,9 +11,8 @@ twaces is a project for HACS408V, a data visualization course at the University 
 ## Data collection
 - [x] Create multiple complex search queries for both ACES and UMD
 - [x] Create scripts to run initial queries for last 30 days worth of data
-- [ ] Create new altered script to only pull from last hour of data
-- [ ] Add script execution to cronjob to execute routinely
-- [ ] Export data to JSON files
+- [x] Export data to JSON files
+- [ ] For more data: wait a week and then pull data from previous week
 ## Spatial Analysis
 - [ ] TBD
 ## Sentiment Analysis
