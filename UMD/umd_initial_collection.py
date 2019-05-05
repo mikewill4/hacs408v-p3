@@ -15,7 +15,7 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
 # Create API object
-api = tweepy.API(auth)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Create data structure to store data
 data = {}
@@ -80,38 +80,46 @@ print "Searching for UMD related tweets..."
 print "----------------------------- UofMaryland Query -----------------------------"
 # Iterate through Queries, storing tweets in dictionary
 for query in uofmaryland_queries:
-    search_results = api.search(q=query,count=100)
+    search_results = tweepy.Cursor(api.search,q=query,count=100).items()
     data[query] = []
+    num_results = 0
     for tweet in search_results:
         add_tweet_fields(query, tweet)
-    print "Added " + str(len(search_results)) + " tweets from " + query + " query"
+        num_results += 1
+    print "Added " + str(num_results) + " tweets from " + query + " query"
 
 print "----------------------------- UMCP Query -----------------------------"
 # Iterate through Queries, storing tweets in dictionary
 for query in umcp_queries:
-    search_results = api.search(q=query,count=100)
+    search_results = tweepy.Cursor(api.search,q=query,count=100).items()
     data[query] = []
+    num_results = 0
     for tweet in search_results:
         add_tweet_fields(query, tweet)
-    print "Added " + str(len(search_results)) + " tweets from " + query + " query"
+        num_results += 1
+    print "Added " + str(num_results) + " tweets from " + query + " query"
 
 print "----------------------------- university + maryland + college + park Query -----------------------------"
 # Iterate through Queries, storing tweets in dictionary
 for query in umd_college_park_queries:
-    search_results = api.search(q=query,count=100)
+    search_results = tweepy.Cursor(api.search,q=query,count=100).items()
     data[query] = []
+    num_results = 0
     for tweet in search_results:
         add_tweet_fields(query, tweet)
-    print "Added " + str(len(search_results)) + " tweets from " + query + " query"
+        num_results += 1
+    print "Added " + str(num_results) + " tweets from " + query + " query"
 
 print "----------------------------- university + maryland + cp Query -----------------------------"
 # Iterate through Queries, storing tweets in dictionary
 for query in umd_cp_queries:
-    search_results = api.search(q=query,count=100)
+    search_results = tweepy.Cursor(api.search,q=query,count=100).items()
     data[query] = []
+    num_results = 0
     for tweet in search_results:
         add_tweet_fields(query, tweet)
-    print "Added " + str(len(search_results)) + " tweets from " + query + " query"
+        num_results += 1
+    print "Added " + str(num_results) + " tweets from " + query + " query"
 
 # Export data to json file
 with open("umd_data.json", "w") as fp:
