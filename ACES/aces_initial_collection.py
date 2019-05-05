@@ -68,7 +68,7 @@ def add_tweet_fields(query, tweet):
             "country": tweet.place.country,
             "country_code": tweet.place.country_code,
             "place_full_name": tweet.place.full_name,
-            "coordinates": tweet.coordinates.coordinates,
+            "coordinates": tweet.coordinates,
             "retweet_count": tweet.retweet_count,
             "favorite_count": tweet.favorite_count,
             "tweet_language": tweet.lang
