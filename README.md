@@ -14,10 +14,12 @@ twaces is a project for HACS408V, a data visualization course at the University 
 - [x] Export data to JSON files
 - [ ] For more data: wait a week and then pull data from previous week
 ## Spatial Analysis
-- [ ] TBD
+- [ ] Extract tweets with location data
+- [ ] Create a world bubble map
+- [ ] Create a country bubble map (United States)
 ## Sentiment Analysis
 - [ ] TBD
-## Social Graph
+## Social Analysis
 - [ ] TBD
 ## Credits
 * [Twitter API](https://developer.twitter.com/en/docs.html)
