@@ -14,15 +14,17 @@ twaces is a project for HACS408V, a data visualization course at the University 
 - [x] Create multiple complex search queries for both ACES and UMD
 - [x] Create scripts to run initial queries for last 30 days worth of data
 - [x] Export data to JSON files
-- [ ] For more data: wait a week and then pull data from previous week
 ## Spatial Analysis
 - [ ] Extract tweets with location data
 - [ ] Create a world bubble map
 - [ ] Create a country bubble map (United States)
 ## Sentiment Analysis
-- [ ] TBD
+- [x] Extract positive and negative tweets
+- [x] Create bar chart comparing quantities
 ## Social Analysis
-- [ ] TBD
+- [ ] Extract all users from tweets
+- [ ] Retrieve follower count
+- [ ] Plot users with highest # of followers
 ## Credits
 * [Twitter API](https://developer.twitter.com/en/docs.html)
 * [Tweepy](http://www.tweepy.org/)
