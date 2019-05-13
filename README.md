@@ -22,9 +22,9 @@ twaces is a project for HACS408V, a data visualization course at the University 
 - [x] Extract positive and negative tweets
 - [x] Create bar chart comparing quantities
 ## Social Analysis
-- [ ] Extract all users from tweets
-- [ ] Retrieve follower count
-- [ ] Plot users with highest # of followers
+- [x] Extract all users from tweets
+- [x] Plot users with highest # of followers
+- [x] Pull tweets with highest favorites & retweets
 ## Credits
 * [Twitter API](https://developer.twitter.com/en/docs.html)
 * [Tweepy](http://www.tweepy.org/)
