@@ -1,11 +1,11 @@
 # Libraries
 import json
-import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 import operator
-#import matplotlib.pyplot as plt
-#from mpl_toolkits.basemap import Basemap
+import folium
+import pandas as pd
+import geocoder
 
 # Load json from aces_data.json file
 with open("../ACES/aces_data.json", "r") as file:
@@ -19,34 +19,32 @@ with open("../UMD/umd_data.json", "r") as file:
 
 ########## Spatial analysis ##########
 # Extract tweets that have location data
-umd_tweet_coordinates = []
+umd_tweet_coordinates = {}
 for query,tweets in umd_data.items():
     for tweet in tweets:
+        tweet_location = "No country or city for " + tweet["user_name"] + "\' tweet"
+        if tweet["user_location"] != None and len(tweet["user_location"]) > 0 and "\\u" not in tweet["user_location"]:
+            tweet_location = tweet["user_location"]
         if len(tweet["coordinates"]) > 0:
-            umd_tweet_coordinates.append(tweet)
-print len(umd_tweet_coordinates)
+            umd_tweet_coordinates[tweet_location] = tweet["coordinates"]
+        elif "No country" not in tweet_location:
+            print("processing " + tweet_location)
+            curr_coords = { "coordinates": geocoder.bing(tweet_location).latlng }
+            print(curr_coords)
+            umd_tweet_coordinates[tweet_location] = curr_coords
 
-# Creating the map
-# Set dimension of figure
-#dpi=96
-#plt.figure(figsize=(2600/dpi, 1800/dpi), dpi=dpi)
+# Create empty map
+umd_map = folium.Map(location=[20, 0], tiles="Mapbox bright", zoom_start=2)
 
-# Make map background
-#m = Basemap(llcrnrlon=-180, llcrnrlat=-65, urcrnrlon=180, urcrnrlat=80)
-#m.drawmapboundary(fill_color="#A6CAE0", linewidth=0)
-#m.fillcontinents(color="grey", alpha=0.3)
-#m.drawcoastlines(linewidth=0.1, color="white")
+# Add markers to map
+for location,coords in umd_tweet_coordinates.items():
+    if coords["coordinates"] != None:
+        folium.Marker([coords["coordinates"][1], coords["coordinates"][0]], popup=location).add_to(umd_map)
+    else:
+        folium.Marker([coords["coords"][0], coords["coords"][1]], popup=location).add_to(umd_map)
 
-# Set colors for each point depending on continent
-
-# Add points
-# m.scatter()
-
-# Copyright
-#plt.text(-170, -58, "Plot created with Python and the Basemap library", ha="left", va="bottom", size="9", color="#555555")
-
-# Save as png
-#plt.savefig("test_bubble_map_umd.png", bbox_inches="tight")
+# Save map
+umd_map.save("../Plots/umd_spatial_analysis.html")
 
 ########## Sentiment analysis ##########
 # Get positive and negative tweets
@@ -87,8 +85,8 @@ for query,tweets in umd_data.items():
             most_favorited_tweet_umd = tweet
 
 # Most popular tweets
-print most_retweeted_tweet_umd["text"]
-print most_favorited_tweet_umd["text"]
+print(most_retweeted_tweet_umd["text"])
+print(most_favorited_tweet_umd["text"])
 
 # 10 most popular users
 sorted_users = sorted(umd_tweet_users.items(), key=operator.itemgetter(1), reverse=True)
@@ -106,6 +104,33 @@ plt.show(block=True)
 ########## ACES Analysis ##########
 
 ########## Spatial analysis ##########
+# Extract tweets that have location data
+aces_tweet_coordinates = {}
+for query,tweets in aces_data.items():
+    for tweet in tweets:
+        tweet_location = "No country or city for " + tweet["user_name"] + "\' tweet"
+        if tweet["user_location"] != None and len(tweet["user_location"]) > 0 and "\\u" not in tweet["user_location"]:
+            tweet_location = tweet["user_location"]
+        if len(tweet["coordinates"]) > 0:
+            aces_tweet_coordinates[tweet_location] = tweet["coordinates"]
+        elif "No country" not in tweet_location:
+            print("processing " + tweet_location)
+            curr_coords = { "coords": geocoder.bing(tweet_location).latlng }
+            print(curr_coords)
+            aces_tweet_coordinates[tweet_location] = curr_coords
+
+# Create empty map
+aces_map = folium.Map(location=[20, 0], tiles="Mapbox bright", zoom_start=2)
+
+# Add markers to map
+for location,coords in aces_tweet_coordinates.items():
+    if coords["coordinates"] != None:
+        folium.Marker([coords["coordinates"][1], coords["coordinates"][0]], popup=location).add_to(aces_map)
+    else:
+        folium.Marker([coords["coords"][0], coords["coords"][1]], popup=location).add_to(aces_map)
+
+# Save map
+aces_map.save("../Plots/aces_spatial_analysis.html")
 
 ########## Sentiment analysis ##########
 positive_sentiment_aces = []
@@ -145,8 +170,8 @@ for query,tweets in aces_data.items():
             most_favorited_tweet_aces = tweet
 
 # Most popular tweets
-print most_retweeted_tweet_aces["text"]
-print most_favorited_tweet_aces["text"]
+print(most_retweeted_tweet_aces["text"])
+print(most_favorited_tweet_aces["text"])
 
 # 10 most popular users
 sorted_users = sorted(aces_tweet_users.items(), key=operator.itemgetter(1), reverse=True)
