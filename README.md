@@ -28,3 +28,5 @@ twaces is a project for HACS408V, a data visualization course at the University 
 * [Twitter API](https://developer.twitter.com/en/docs.html)
 * [Tweepy](http://www.tweepy.org/)
 * [Python Graph Gallery](https://python-graph-gallery.com)
+* [Geocoder](https://geocoder.readthedocs.io/)
+* [Bing Maps API](https://www.microsoft.com/en-us/maps/documentation)
