@@ -15,9 +15,8 @@ twaces is a project for HACS408V, a data visualization course at the University 
 - [x] Create scripts to run initial queries for last 30 days worth of data
 - [x] Export data to JSON files
 ## Spatial Analysis
-- [ ] Extract tweets with location data
-- [ ] Create a world bubble map
-- [ ] Create a country bubble map (United States)
+- [x] Extract tweets with location data
+- [x] Create a world with pins for each tweet
 ## Sentiment Analysis
 - [x] Extract positive and negative tweets
 - [x] Create bar chart comparing quantities
