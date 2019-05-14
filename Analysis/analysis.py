@@ -29,7 +29,7 @@ for query,tweets in umd_data.items():
             umd_tweet_coordinates[tweet_location] = tweet["coordinates"]
         elif "No country" not in tweet_location:
             print("processing " + tweet_location)
-            curr_coords = { "coordinates": geocoder.bing(tweet_location).latlng }
+            curr_coords = { "coords": geocoder.bing(tweet_location).latlng }
             print(curr_coords)
             umd_tweet_coordinates[tweet_location] = curr_coords
 
@@ -38,9 +38,9 @@ umd_map = folium.Map(location=[20, 0], tiles="Mapbox bright", zoom_start=2)
 
 # Add markers to map
 for location,coords in umd_tweet_coordinates.items():
-    if coords["coordinates"] != None:
+    if coords != None and coords.has_key("coordinates"):
         folium.Marker([coords["coordinates"][1], coords["coordinates"][0]], popup=location).add_to(umd_map)
-    else:
+    elif coords != None and coords["coords"] != None:
         folium.Marker([coords["coords"][0], coords["coords"][1]], popup=location).add_to(umd_map)
 
 # Save map
@@ -124,9 +124,9 @@ aces_map = folium.Map(location=[20, 0], tiles="Mapbox bright", zoom_start=2)
 
 # Add markers to map
 for location,coords in aces_tweet_coordinates.items():
-    if coords["coordinates"] != None:
+    if coords != None and coords.has_key("coordinates"):
         folium.Marker([coords["coordinates"][1], coords["coordinates"][0]], popup=location).add_to(aces_map)
-    else:
+    elif coords != None and coords["coords"] != None:
         folium.Marker([coords["coords"][0], coords["coords"][1]], popup=location).add_to(aces_map)
 
 # Save map
